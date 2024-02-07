@@ -45,6 +45,7 @@ async def main():
             message_text = message_text.replace(
                 replace_string,
                 f"<a href='{link}{x[0]}h{x[1]}m{x[2]}s'>{x[0]}:{x[1]}:{x[2]}</a>",
+                1,
             )
 
     # print(message_text)
