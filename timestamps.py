@@ -30,7 +30,7 @@ async def main():
 
     start_time = await get_start_time(lines)
 
-    start_song_regex = r"([0-9a-fA-F]+) / [0-9a-fA-F]+ \d+% \(bsr [0-9a-fA-F]+\) requested by @([a-z0-9_]+) is next!"
+    start_song_regex = r"([0-9a-fA-F]+) / [0-9a-fA-F]+ \d+% \(bsr [0-9a-fA-F]+\) requested by @([a-zA-Z0-9_]+) is next!"
 
     for line in lines:
 

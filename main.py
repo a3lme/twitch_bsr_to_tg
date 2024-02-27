@@ -89,7 +89,7 @@ async def message_processing(msg: str) -> None:
         # Save message to main log
         get_log_file().write(datetime.now().strftime("%Y-%m-%d %H:%M:%S") + "|" + msg)
         # Parse request
-        add_song_regex = r"\(bsr [0-9a-fA-F]+\) ([0-9a-fA-F]+) / [0-9a-fA-F]+ \d+% requested by @([a-z0-9_]+) added to queue."
+        add_song_regex = r"\(bsr [0-9a-fA-F]+\) ([0-9a-fA-F]+) / [0-9a-fA-F]+ \d+% requested by @([a-zA-Z0-9_]+) added to queue."
         m = re.search(add_song_regex, msg)
         if m:
             r = requests.get(
@@ -97,7 +97,7 @@ async def message_processing(msg: str) -> None:
             )
             song = r.json()
             get_temp_file().write(
-                f"#repl{m.group(1)}*{m.group(2)}# - "
+                f"#repl{m.group(1)}*{m.group(2).lower()}# - "
                 + song["name"]
                 + " //"
                 + '<a href="https://beatsaver.com/maps/'
